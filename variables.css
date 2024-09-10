@@ -1,0 +1,21 @@
+:root {
+    --cell-size: 140px;
+    --mark-size: calc(var(--cell-size) * .8);
+
+    --big-size: 12vmin;
+    --medium-size: 8vmin;
+    --small-size: 5vmin;
+    --text-size: 2.4vmin;
+
+    --player-color-big: rgb(202, 244, 255);
+    --ai-color-big: rgb(245, 219, 255);
+
+    --player-color-medium: rgb(160, 222, 255);
+    --ai-color-medium: rgb(218, 182, 252);
+
+    --player-color-small: rgb(90, 178, 255);
+    --ai-color-small: rgb(187, 173, 255);
+
+    --orange: #f1ce7b;
+    --black: #292725;
+}

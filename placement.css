@@ -1,0 +1,96 @@
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 40vh; /* Center the game vertically within the viewport */
+    padding: 100px 0;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 14vmin);
+    grid-template-rows: repeat(3, 14vmin);
+    gap: 5px;
+    place-content: center;
+    width: 90%;
+    margin: 40px auto;
+}
+
+.cell {
+    content: '';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    border: none;
+    border-radius: 10px;
+    position: relative;
+}
+
+.cell[data-role="player"][data-size="big"]::after {
+    content: '';
+    width: 75%;
+    height: 75%;
+    background-image: url('player_chicken_big_v2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+}
+
+.cell[data-role="player"][data-size="medium"]::after {
+    content: '';
+    width: 50%;
+    height: 50%;
+    background-image: url('player_chicken_medium.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+}
+
+.cell[data-role="player"][data-size="small"]::after {
+    content: '';
+    width: 30%;
+    height: 30%;
+    background-image: url('player_chicken_small.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+}
+
+.cell[data-role="ai"][data-size="big"]::after {
+    content: '';
+    width: 75%;
+    height: 75%;
+    background-image: url('ai_chicken_big.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+}
+
+
+.cell[data-role="ai"][data-size="medium"]::after {
+    content: '';
+    width: 50%;
+    height: 50%;
+    background-image: url('ai_chicken_medium.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+}
+
+.cell[data-role="ai"][data-size="small"]::after {
+    content: '';
+    width: 30%;
+    height: 30%;
+    background-image: url('ai_chicken_small.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+}

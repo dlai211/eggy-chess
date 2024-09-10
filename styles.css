@@ -1,0 +1,223 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 40vh; /* Center the game vertically within the viewport */
+    padding: 100px 0;
+}
+
+.board-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+body {
+    margin: 0;
+    background-color: var(--black);
+    padding-bottom: 100vmin;
+}
+
+h1, h2{
+    font-size: 8vmin;
+    font-family: 'Finger Paint', cursive;
+    text-transform: uppercase;
+    color: var(--orange);
+}
+
+h2 {
+    font-size: 5.5vmin;
+}
+
+button {
+    padding: 1.4vmin 2.6vmin;
+    border-radius: 14px;
+    background-color: var(--orange);
+    color: #333;
+    border-color: var(--orange);
+    font-size: 2vmin;
+    transition: 200ms transform;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+
+.player-pieces, .ai-pieces {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 1.6vmin;
+}
+
+.player, .ai {
+    position: relative;
+    margin: 0px 0px 20px 0px;
+    cursor: grab;
+}
+
+/* .player {
+    cursor: grab;
+} */
+
+/* .ai {
+    cursor: not-allowed;
+} */
+
+.player:active, .ai:active {
+    cursor: grabbing;
+}
+
+.ai.big {
+    width: var(--big-size);
+    height: var(--big-size);
+    background-image: url('ai_chicken_big.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.ai.medium {
+    width: var(--medium-size);
+    height: var(--medium-size);
+    background-image: url('ai_chicken_medium.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.ai.small {
+    width: var(--small-size);
+    height: var(--small-size);
+    background-image: url('ai_chicken_small.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.player.big {
+    width: var(--big-size);
+    height: var(--big-size);
+    background-image: url('player_chicken_big.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.player.medium {
+    width: var(--medium-size);
+    height: var(--medium-size);
+    background-image: url('player_chicken_medium.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.player.small {
+    width: var(--small-size);
+    height: var(--small-size);
+    background-image: url('player_chicken_small.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.player-text, .ai-text {
+    font-size: var(--text-size);
+    font-family: 'Finger Paint', cursive;
+    margin: 0px 20px 15px 3px;
+    /* margin-right: 20px;
+    margin-left: 3px; */
+}
+
+.player-text {
+    color: rgb(17, 88, 146);
+}
+
+.ai-text {
+    color: rgb(180, 91, 212);
+}
+
+
+/* starting message  */
+.starting-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95); /* Black background with some transparency */
+    z-index: 1000; /* Make sure it's on top of everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.overlay-content {
+    text-align: center;
+    color: white;
+}
+
+.button-container {
+    margin-top: 3vmin;
+}
+
+/* Blue button for the player */
+.blue-button {
+    background-color: var(--player-color-medium);
+    color: white;
+    margin-right: 8vmin;
+}
+
+/* Purple button for the AI */
+.purple-button {
+    background-color: var(--ai-color-medium);
+    color: white;
+}
+
+
+.thinking {
+    cursor: progress;
+}
+
+/* winning message  */
+
+.winning-message{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .9);
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    flex-direction: column;
+}
+
+.winning-message button {
+    font-size: 3rem;
+    background-color: white;
+    border: 1px solid black;
+    padding: .25rem .5rem;
+    cursor: pointer;
+}
+
+.winning-message button:hover {
+    background-color: grey;
+    color: white;
+    border-color: white;
+}
+
+
