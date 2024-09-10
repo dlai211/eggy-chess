@@ -311,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
 
-    function minimax(minimax_board, depth, alpha, beta, is_maximizing, player_available_pieces, ai_available_pieces, max_depth = 10) {
+    function minimax(minimax_board, depth, alpha, beta, is_maximizing, player_available_pieces, ai_available_pieces, max_depth = 8) {
         let best_score;
         if (checkWin(2, minimax_board)) {
             return 1000 / (depth + 1); 
@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let score = minimax(newBoard, 0, -Infinity, Infinity, false, player_pieces, ai_pieces);
             remove_piece(newBoard, index, 2, size, ai_pieces, tmp);
             score = score + (position_weights[index] * size_weights[size])
-            console.log("position_weights:", position_weights[index], " size_weights:", size_weights[size]);
+            // console.log("position_weights:", position_weights[index], " size_weights:", size_weights[size]);
             console.log("Evaluating move: row:", Math.floor(index/3), " col:", index%3, " size:", reversedSizeValue[size], " score:", score);
             if (score > best_score) {
                 best_score = score;
