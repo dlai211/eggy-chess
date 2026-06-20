@@ -1,6 +1,6 @@
 // --- Constants & Weights ---
 const position_weights = [2.2, 2, 2.2, 2, 2.2, 2, 2.2, 2, 2.2];
-const size_weights = [1, 2, 3]; // Updated so Big pieces are properly valued!
+const size_weights = [1, 2, 3];
 
 const sizeValue = { 'big': 2, 'medium': 1, 'small': 0, '': -1 };
 const roleValue = { 'player': 1, 'ai': 2, '': -1 };
