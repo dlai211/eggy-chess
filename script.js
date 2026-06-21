@@ -196,6 +196,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function handleDrop(event) {
         event.preventDefault();
+
+        if (game_over) return;
+        
         const cell = event.target;
         const pieceClass = event.dataTransfer.getData('text/plain');
         const [role, size] = pieceClass.split(' ');
@@ -222,9 +225,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Check for a win condition
             if (checkWin(1)) {
-                // setWinningMessage('player');
                 game_over = true;
                 playerText.textContent = `Player Wins!`;
+                updateDraggableState(); // Disable further moves
             } else {
                 requestAIMove(); // <--- Asks the worker to calculate the response
             }
@@ -385,6 +388,8 @@ document.addEventListener('DOMContentLoaded', () => {
             piece.setAttribute('draggable', false);
             removePieceEventListeners(piece);
         });
+
+        if (game_over) return;
     
         // Enable dragging for the current player's pieces only if the count is greater than 0
         if (currentPlayer === 'player') {
