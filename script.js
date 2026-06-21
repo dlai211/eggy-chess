@@ -146,16 +146,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleTouchStart(event) {
-        event.target.classList.add('dragging');
+        if (event.target.getAttribute('draggable') === 'true') {
+            event.target.classList.add('dragging');
+        }
     }
 
     function handleTouchMove(event) {
-        const touchLocation = event.touches[0];
         const piece = document.querySelector('.dragging');
         if (piece) {
-            piece.style.position = 'absolute';
-            piece.style.left = `${touchLocation.pageX - 25}px`;
-            piece.style.top = `${touchLocation.pageY - 25}px`;
+            event.preventDefault();  // prevent the screen from scrolling while dragging
+            
+            const touchLocation = event.touches[0];
+            
+            piece.style.position = 'fixed'; 
+            piece.style.left = `${touchLocation.clientX - piece.offsetWidth / 2}px`;
+            piece.style.top = `${touchLocation.clientY - piece.offsetHeight / 2}px`;
+            piece.style.zIndex = '1000'; // Make sure it floats above other elements
         }
     }
 
@@ -163,15 +169,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const piece = document.querySelector('.dragging');
         if (piece) {
             piece.classList.remove('dragging');
+
+            // 1. Reset the piece's visual styles back to normal
             piece.style.position = 'relative';
             piece.style.left = '0';
             piece.style.top = '0';
+            piece.style.zIndex = '';
 
             const touchLocation = event.changedTouches[0];
-            const cell = document.elementFromPoint(touchLocation.clientX, touchLocation.clientY);
 
+            // 2. Hide the piece for a millisecond so we can see the cell underneath it!
+            piece.style.display = 'none'; 
+            const cell = document.elementFromPoint(touchLocation.clientX, touchLocation.clientY);
+            piece.style.display = ''; // Bring the piece back instantly
+
+            // 3. If they dropped it on a cell, trigger the drop logic
             if (cell && cell.classList.contains('cell')) {
-                handleDrop({ target: cell, dataTransfer: { getData: () => piece.classList } });
+                handleDrop({ 
+                    preventDefault: () => {}, // Mock prevent default so handleDrop doesn't crash
+                    target: cell, 
+                    dataTransfer: { getData: () => piece.className } // Use className to pass a String!
+                });
             }
         }
     }
